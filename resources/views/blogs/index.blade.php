@@ -12,9 +12,11 @@
                     <h2 class="mb-4">All Blogs</h2>
                     <!-- check if it is auth -->
                     @auth
+                    @if (Auth::user()->role != 'admin')
                     <div class="mb-3">
                         <a href="{{ route('blogs.create') }}" class="btn btn-primary">Create New Blog</a>
                     </div>
+                    @endif
                     @endauth
 
                     @if (session('success'))
