@@ -11,6 +11,7 @@ class AdminMiddleware
 {
     /**
      * Handle an incoming request.
+     * This middleware checks if the authenticated user is an admin.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */

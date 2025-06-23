@@ -31,10 +31,24 @@ class Blog extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+    * Scope a query to only include blogs that are pending.
+    *
+    * @param \Illuminate\Database\Eloquent\Builder $query
+    * @return \Illuminate\Database\Eloquent\Builder
+    */
     public function scopePublished($query)
     {
         return $query->where('status', 'published')
                      ->whereNotNull('published_at')
                      ->where('published_at', '<=', now());
+    }
+
+    /**
+    * capitalize status
+    */
+    public function getStatusDisplayAttribute($value)
+    {
+        return ucfirst($value);
     }
 }
